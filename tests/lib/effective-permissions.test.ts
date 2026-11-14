@@ -306,16 +306,18 @@ for (const status of [401, 403, 500]) {
   })
 }
 
-test("an absent endpoint selects explicit legacy compatibility", async () => {
-  const client = new EffectivePermissionClient(
-    async () => {
-      throw Object.assign(new Error("missing"), { status: 404 })
-    },
-    () => {},
-  )
-  await client.load(check)
-  assert.equal(client.status, "unsupported")
-})
+for (const status of [404, 405, 426, 501]) {
+  test(`an unsupported endpoint (${status}) selects explicit legacy compatibility`, async () => {
+    const client = new EffectivePermissionClient(
+      async () => {
+        throw Object.assign(new Error("unsupported"), { status })
+      },
+      () => {},
+    )
+    await client.load(check)
+    assert.equal(client.status, "unsupported")
+  })
+}
 
 test("temporary transport failures recover after a bounded retry instead of permanently hiding controls", async (t) => {
   t.mock.timers.enable({ apis: ["setTimeout"] })
@@ -336,11 +338,11 @@ test("temporary transport failures recover after a bounded retry instead of perm
   assert.equal(calls, 2)
 })
 
-test("a previously supported endpoint cannot fail open into legacy grants after a later 404", async () => {
+test("a previously supported endpoint cannot fail open into legacy grants after a later 426", async () => {
   let calls = 0
   const client = new EffectivePermissionClient(
     async (requests) => {
-      if (++calls > 1) throw Object.assign(new Error("temporary"), { status: 404 })
+      if (++calls > 1) throw Object.assign(new Error("temporary"), { status: 426 })
       return response(requests)
     },
     () => {},
