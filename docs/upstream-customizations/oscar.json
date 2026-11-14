@@ -34,6 +34,18 @@
       ],
       "upstream": ["package.json", "pnpm-lock.yaml", "next.config.ts", "scripts", ".gitignore", ".github"],
       "verify": "Frozen install, type-check, lint, format:check, test:run, production static build; verify asset paths and API/OIDC compatibility against pinned RustFS engine before release."
+    },
+    {
+      "id": "oscar-session",
+      "downstream": ["themes/oscar/session-gate.tsx", "tests/lib/oscar-session-gate.test.ts", "app/layout.tsx"],
+      "upstream": [
+        "contexts/auth-context.tsx",
+        "lib/sts.ts",
+        "lib/config.ts",
+        "hooks/use-local-storage.ts",
+        "app/layout.tsx"
+      ],
+      "verify": "Build with NEXT_PUBLIC_OSCAR_SSO_ENABLED=true; test admission, denial, cleanup, expiry and principal switches. Never expose children before OSCAR broker approval. Retest real STS/auth semantics against pinned engine."
     }
   ]
 }

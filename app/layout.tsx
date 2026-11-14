@@ -6,6 +6,7 @@ import { I18nProvider } from "@/components/providers/i18n-provider"
 import { AuthProvider } from "@/contexts/auth-context"
 import { AppUiProvider } from "@/components/providers/app-ui-provider"
 import { getThemeManifest } from "@/lib/theme/manifest"
+import { OscarSessionGate } from "@/themes/oscar/session-gate"
 import { readOscarAppearance } from "@/themes/oscar/appearance"
 
 const archivo = localFont({
@@ -52,7 +53,13 @@ export default function RootLayout({
         <ThemeProvider>
           <I18nProvider>
             <AuthProvider>
-              <AppUiProvider>{children}</AppUiProvider>
+              {theme.id === "oscar" && process.env.NEXT_PUBLIC_OSCAR_SSO_ENABLED === "true" ? (
+                <OscarSessionGate>
+                  <AppUiProvider>{children}</AppUiProvider>
+                </OscarSessionGate>
+              ) : (
+                <AppUiProvider>{children}</AppUiProvider>
+              )}
             </AuthProvider>
           </I18nProvider>
         </ThemeProvider>

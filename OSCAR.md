@@ -44,3 +44,9 @@ Local qualification against the verified 1.0.5 macOS arm64 release passed: Conso
 ## Upstream updates
 
 Use [the upstream merge skill](.agents/skills/oscar-upstream-merge/SKILL.md) and its [customization ledger](docs/upstream-customizations/oscar.json). The script produces an upstream-change inventory and can rehearse a merge in an isolated worktree. It never merges into `oscar`, advances `main`, pushes, or releases automatically. Review upstream changes to overlaid components even when Git reports no conflict.
+
+## OSCAR session sign-in
+
+Core packaging sets `NEXT_PUBLIC_OSCAR_SSO_ENABLED=true` at build time. The Console POSTs to its same-origin `/oscar-session/` gateway with cookies and a fixed CSRF header; the OSCAR broker validates the current administrator account and returns short-lived STS credentials. It never receives an OSCAR password, OAuth login prompt, signing key or bootstrap credential. Children remain hidden until admission, and a principal change remounts the app. Failures clear stored credentials and show Retry; there is no automatic fallback to native login in this build. Refresh occurs on focus/visibility and every five minutes while visible.
+
+The issuer is a hidden workload-only federation provider, not an interactive OAuth server. The same-hostname deployment is required for OSCAR's host-only cookie. Previously issued STS credentials remain usable until their 15-minute expiry even after OSCAR logout or role revocation. Native emergency access is available only through the private engine Console, outside the public branded gateway. See the core operator guide `docs/user_documentation/09-administration/object-storage-console.md`.
