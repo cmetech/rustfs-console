@@ -112,3 +112,9 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## OSCAR downstream
+
+`main` is an unmodified upstream mirror. Make OSCAR changes on `oscar` or its feature branches. Follow `.agents/skills/oscar-upstream-merge/SKILL.md` for updates and review the customization ledger even for conflict-free merges. See `OSCAR.md` for building and packaging.
+
+Keep licensed fonts/logos under the ignored `themes/oscar/private-assets/` directory; stage them locally using the supplied script. Never commit generated theme overlay copies: restore the default theme before staging upstream component files. Do not publish branded build artifacts to the public fork.

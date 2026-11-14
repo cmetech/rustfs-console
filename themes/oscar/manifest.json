@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "oscar",
+  "name": "OSCAR Modern",
+  "brand": {
+    "name": "OSCAR Object Storage",
+    "shortName": "OSCAR",
+    "description": "OSCAR object storage administration, powered by RustFS."
+  },
+  "assets": {
+    "logo": "/themes/default/assets/logo.svg",
+    "logoCompact": "/themes/default/assets/logo.svg",
+    "userAvatar": "/img/userAvatar.png"
+  },
+  "links": {
+    "website": "https://www.rustfs.com",
+    "documentation": "https://docs.rustfs.com/?ref=console",
+    "github": "https://github.com/rustfs/console",
+    "x": "https://x.com/rustfsofficial"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "baseline": "2366e2a95ded436f830c0049dfe88174ccaeb45d",
+  "customizations": [
+    {
+      "id": "oscar-branding",
+      "downstream": [
+        "themes/oscar/manifest.json",
+        "themes/oscar/appearance.ts",
+        "themes/oscar/appearance-sync.tsx",
+        "themes/oscar/styles/theme.css",
+        "themes/oscar/components/providers/theme-provider.tsx",
+        "themes/oscar/components/theme/logo.tsx",
+        "app/layout.tsx"
+      ],
+      "upstream": [
+        "themes/default",
+        "components",
+        "app/layout.tsx",
+        "app/globals.css",
+        "styles",
+        "lib/theme",
+        "scripts/apply-theme-overrides.js"
+      ],
+      "verify": "Review upstream changes hidden by theme overlays; build default and OSCAR themes; verify logos, fonts, contrast, keyboard focus, and dark/light/system at desktop and mobile sizes. Launch parameter must preserve OAuth state, persist before redirects, reject invalid modes, and synchronize the same-origin OSCAR mode cookie on focus and while visible."
+    },
+    {
+      "id": "oscar-delivery",
+      "downstream": [
+        "scripts/oscar-stage-assets.mjs",
+        "scripts/oscar-upstream.js",
+        ".gitignore",
+        ".agents/skills/oscar-upstream-merge/SKILL.md",
+        "docs/upstream-customizations/oscar.json"
+      ],
+      "upstream": ["package.json", "pnpm-lock.yaml", "next.config.ts", "scripts", ".gitignore", ".github"],
+      "verify": "Frozen install, type-check, lint, format:check, test:run, production static build; verify asset paths and API/OIDC compatibility against pinned RustFS engine before release."
+    }
+  ]
+}

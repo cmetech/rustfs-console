@@ -6,6 +6,7 @@ import { I18nProvider } from "@/components/providers/i18n-provider"
 import { AuthProvider } from "@/contexts/auth-context"
 import { AppUiProvider } from "@/components/providers/app-ui-provider"
 import { getThemeManifest } from "@/lib/theme/manifest"
+import { readOscarAppearance } from "@/themes/oscar/appearance"
 
 const archivo = localFont({
   src: "../assets/fonts/archivo-variable.ttf",
@@ -42,6 +43,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${archivo.variable} ${geist.variable} ${geistMono.variable}`}>
       <body className="console-ui bg-background font-sans antialiased overscroll-none">
+        {theme.id === "oscar" && (
+          <script
+            suppressHydrationWarning
+            dangerouslySetInnerHTML={{ __html: `(${readOscarAppearance.toString()})(window, true)` }}
+          />
+        )}
         <ThemeProvider>
           <I18nProvider>
             <AuthProvider>

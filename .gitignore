@@ -62,3 +62,8 @@ yarn-error.log*
 next-env.d.ts
 /.pnpm-store
 /.reasonix
+
+# OSCAR sources; licensed branding is supplied locally at build time.
+!/themes/oscar/
+!/themes/oscar/**
+/themes/oscar/private-assets/

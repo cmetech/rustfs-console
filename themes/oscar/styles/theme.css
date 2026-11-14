@@ -1,0 +1,87 @@
+@font-face {
+  font-family: "OSCAR Hilda";
+  src: url("../private-assets/ericsson-hilda-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OSCAR Hilda";
+  src: url("../private-assets/ericsson-hilda-medium.woff2") format("woff2");
+  font-weight: 500 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OSCAR Hilda";
+  src: url("../private-assets/ericsson-hilda-bold.woff2") format("woff2");
+  font-weight: 700 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OSCAR Hilda Mono";
+  src: url("../private-assets/ericsson-hilda-mono-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+/* Higher specificity than generated upstream tokens, independent of CSS chunk order. */
+html:root {
+  --font-geist-sans: "OSCAR Hilda";
+  --font-archivo: "OSCAR Hilda";
+  --font-geist-mono: "OSCAR Hilda Mono";
+  --font-sans: "OSCAR Hilda", var(--font-fallback), sans-serif;
+  --font-display: "OSCAR Hilda", var(--font-fallback), sans-serif;
+  --font-heading: var(--font-display);
+  --font-mono: "OSCAR Hilda Mono", monospace;
+  --background: #f2f2f2;
+  --foreground: #242424;
+  --card: #ffffff;
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: #1174e6;
+  --primary-foreground: #ffffff;
+  --secondary: #e0e0e0;
+  --secondary-foreground: var(--foreground);
+  --muted: #f2f2f2;
+  --muted-foreground: #666666;
+  --accent: #d6e2f5;
+  --accent-foreground: #000082;
+  --border: #e0e0e0;
+  --input: #767676;
+  --ring: #000082;
+  --sidebar: var(--card);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+  --brand: var(--primary);
+  --brand-foreground: var(--primary-foreground);
+  --link: #000082;
+  --subtle: #666666;
+  --faint: #666666;
+  --strong: #767676;
+  --surface: var(--card);
+  --surface-2: #e0e0e0;
+  --selection: #d6e2f5;
+}
+html:root.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #242424;
+  --secondary: #383838;
+  --muted: #242424;
+  --muted-foreground: #a0a0a0;
+  --accent: #000082;
+  --accent-foreground: #ffffff;
+  --border: #767676;
+  --input: #a0a0a0;
+  --ring: #d6e2f5;
+  --link: #d6e2f5;
+  --subtle: #a0a0a0;
+  --faint: #a0a0a0;
+  --strong: #a0a0a0;
+  --surface-2: #383838;
+  --selection: #000082;
+}
