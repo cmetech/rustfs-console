@@ -159,6 +159,17 @@ for (const mapping of mappings) {
   copyDirRecursive(path.join(themeRoot, mapping.from), path.join(root, mapping.to))
 }
 
+// File-based Next icons override metadata; restore them when leaving the OSCAR theme.
+if (themeId === "oscar") {
+  for (const name of ["favicon.ico", "icon.svg", "icon16.png", "icon32.png", "apple-icon.png"]) {
+    const target = path.join(root, "app", name)
+    if (fs.existsSync(target)) {
+      backupBeforeWrite(target)
+      fs.unlinkSync(target)
+    }
+  }
+}
+
 const themeLogoPath = path.join(root, "assets", "logo.svg")
 const themeDarkLogoPath = path.join(root, "assets", "logo-dark.svg")
 if (fs.existsSync(themeLogoPath) && !fs.existsSync(themeDarkLogoPath)) {

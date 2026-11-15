@@ -33,6 +33,9 @@ const theme = getThemeManifest()
 
 export const metadata: Metadata = {
   title: theme.brand.name,
+  ...(theme.id === "oscar"
+    ? { icons: { icon: "/rustfs/console/oscar-branding/favicon/", apple: "/rustfs/console/oscar-branding/favicon/" } }
+    : {}),
   description: theme.brand.description ?? "RustFS is a distributed file system written in Rust.",
 }
 

@@ -10,7 +10,9 @@
         "themes/oscar/styles/theme.css",
         "themes/oscar/components/providers/theme-provider.tsx",
         "themes/oscar/components/theme/logo.tsx",
-        "app/layout.tsx"
+        "app/layout.tsx",
+        "scripts/apply-theme-overrides.js",
+        "tests/lib/oscar-brand-icons.test.js"
       ],
       "upstream": [
         "themes/default",
