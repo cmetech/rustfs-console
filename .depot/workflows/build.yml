@@ -10,9 +10,8 @@
 name: Build
 
 # Removed unsupported trigger: release. Release events are not supported.
+# GitLab runners are the default; Depot execution is opt-in.
 on:
-  push:
-    branches: ["main"]
   workflow_dispatch:
 
 permissions:

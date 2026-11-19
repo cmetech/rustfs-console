@@ -6,14 +6,9 @@
 
 name: 🔍 Code Quality
 
+# GitLab runners are the default; Depot execution is opt-in.
 on:
-  push:
-    branches: [main, develop]
-  pull_request:
-    branches: [main, develop]
-  schedule:
-    # 每天凌晨 2 点运行质量检查
-    - cron: "0 2 * * *"
+  workflow_dispatch:
 
 env:
   NODE_VERSION: "22"

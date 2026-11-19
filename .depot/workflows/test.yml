@@ -6,11 +6,8 @@
 
 name: 🧪 Tests
 
+# GitLab runners are the default; Depot execution is opt-in.
 on:
-  push:
-    branches: [main, develop]
-  pull_request:
-    branches: [main, develop]
   workflow_dispatch:
 
 concurrency:

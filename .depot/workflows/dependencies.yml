@@ -6,10 +6,8 @@
 
 name: 📦 Dependencies Management
 
+# GitLab runners are the default; Depot execution is opt-in.
 on:
-  schedule:
-    # 每周一凌晨 2 点检查依赖更新
-    - cron: "0 2 * * 1"
   workflow_dispatch:
     inputs:
       update_type:
